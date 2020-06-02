@@ -5,10 +5,10 @@ app = Flask(__name__)
 @app.route('/echo/', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
-    msg = request.args.get("mag", None)
+    msg = request.args.get("msg", None)
 
     # For debugging
-    print(f"got mag {msg}")
+    print(f"got msg: {msg}")
 
     response = {}
 
@@ -17,7 +17,7 @@ def respond():
         response["ERROR"] = "no message to echo"
     # Now the user entered a valid name
     else:
-        response["MESSAGE"] = f"{msg}"
+        response["ECHO"] = f"{msg}"
 
     # Return the response in json format
     return jsonify(response)
